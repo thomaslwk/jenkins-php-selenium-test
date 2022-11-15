@@ -6,7 +6,7 @@ pipeline {
 				stage('Deploy') {
 					agent any
 					environment {
-						DIR = sh(script: 'cd jenkins/scripts', returnStdout: true)
+						DIR = sh(script: 'cd jenkins/scripts && ls -l', returnStdout: true)
 					}
 					steps {
 						sh '''

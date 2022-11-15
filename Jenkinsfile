@@ -12,8 +12,10 @@ pipeline {
 						sh '''
 						echo $DIR
 						'''
+						sh 'chmod +x ./jenkins/scripts/deploy.sh'
 						sh '. /jenkins/scripts/deploy.sh'
 						input message: 'Finished using the web site? (Click "Proceed" to continue)'
+						sh 'chmod +x ./jenkins/scripts/deploy.sh'
 						sh '. /jenkins/scripts/kill.sh'
 					}
 				}

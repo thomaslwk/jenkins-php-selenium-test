@@ -9,11 +9,11 @@ pipeline {
 						DIR = sh(script: 'cd jenkins/scripts && ls', returnStdout: true)
 					}
 					steps {
-						sh '''
-						echo $DIR
-						'''
+						// sh '''
+						// echo $DIR
+						// '''
 						sh 'chmod +x ./jenkins/scripts/deploy.sh'
-						sh './jenkins/scripts/deploy.sh'
+						sh '.{pwd}/jenkins/scripts/deploy.sh'
 						input message: 'Finished using the web site? (Click "Proceed" to continue)'
 						sh 'chmod +x ./jenkins/scripts/deploy.sh'
 						sh './jenkins/scripts/kill.sh'

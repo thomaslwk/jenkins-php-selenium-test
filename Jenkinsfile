@@ -13,30 +13,29 @@ pipeline {
 						echo $DIR
 						'''
 						sh 'chmod +x ./jenkins/scripts/deploy.sh'
-						sh './jenkins/scripts/kill.sh'
-						// sh '. /var/jenkins_home/workspace/phpsucks-Selenium/jenkins/scripts/deploy.sh'
-						// input message: 'Finished using the web site? (Click "Proceed" to continue)'
+						sh './jenkins/scripts/deploy.sh'
+						input message: 'Finished using the web site? (Click "Proceed" to continue)'
 						sh 'chmod +x ./jenkins/scripts/deploy.sh'
-						sh '. /var/jenkins_home/workspace/phpsucks-Selenium/jenkins/scripts/kill.sh'
+						sh './jenkins/scripts/kill.sh'
 					}
 				}
-				// stage('Headless Browser Test') {
-				// 	agent {
-				// 		docker {
-				// 			image 'maven:3-alpine' 
-				// 			args '-v /root/.m2:/root/.m2' 
-				// 		}
-				// 	}
-				// 	steps {
-				// 		sh 'mvn -B -DskipTests clean package'
-				// 		sh 'mvn test'
-				// 	}
-				// 	post {
-				// 		always {
-				// 			junit 'target/surefire-reports/*.xml'
-				// 		}
-				// 	}
-				// }
+				stage('Headless Browser Test') {
+					agent {
+						docker {
+							image 'maven:3-alpine' 
+							args '-v /root/.m2:/root/.m2' 
+						}
+					}
+					steps {
+						sh 'mvn -B -DskipTests clean package'
+						sh 'mvn test'
+					}
+					post {
+						always {
+							junit 'target/surefire-reports/*.xml'
+						}
+					}
+				}
 			}
 		}
 	}

@@ -1,12 +1,12 @@
 pipeline {
 	agent none
 	stages {
-		// stage('Setup bridge network') {
-	    //     agent any
-		// 		steps {
-		// 		    sh 'docker network create --driver bridge my-net'
-		// 	    }
-	    // }
+		stage('Setup bridge network') {
+	        agent any
+				steps {
+				    sh 'docker network create --driver bridge my-net'
+			    }
+	    }
 		stage('Integration UI Test') {
 			parallel {
 				stage('Deploy') {

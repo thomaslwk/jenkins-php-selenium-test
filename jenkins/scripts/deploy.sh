@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 set -x
-docker run s-d -p 80:80 --name my-apache-php-app -v `pwd`src:/var/www/html php:7.2-apache
+docker run -d -p 80:80 --name my-apache-php-app -v `pwd`/src:/var/www/html php:7.2-apache
 sleep 1
 set +x
 

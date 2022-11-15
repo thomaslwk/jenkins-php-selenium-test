@@ -7,6 +7,7 @@ pipeline {
 				    sh 'docker network create --driver bridge my-net'
 			    }
 	    }
+
 		stage('Integration UI Test') {
 			parallel {
 				stage('Deploy') {

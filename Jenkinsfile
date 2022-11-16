@@ -50,9 +50,9 @@ pipeline {
         //     }
         // }
 	}
-	 post {
-        always {
-            recordIssues enabledForFailure: true, tool: SonarQube()
-        }
-    }
+	//  post {
+    //     always {
+    //         recordIssues enabledForFailure: true, tool: SonarQube()
+    //     }
+    // }
 }
